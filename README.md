@@ -2,6 +2,8 @@
 
 O objetivo principal deste projeto é explorar como o K-Means, um popular algoritmo de aprendizado de máquina não supervisionado, pode ser utilizado para clusterizar conjuntos de dados de duas variáveis aleatórias que seguem uma distribuição normal bivariada. 
 
+App desenvolvido disponível em https://ufsm.shinyapps.io/kmeans/
+
 O K-Means é uma técnica de agrupamento (clustering) amplamente utilizada em aprendizado de máquina e análise de dados, projetada para dividir um conjunto de dados em grupos ou clusters de forma que os pontos de dados dentro de um mesmo grupo sejam mais semelhantes entre si do que com os pontos de outros grupos. Ele funciona iterativamente atribuindo pontos de dados a clusters com base na proximidade em relação a centróides (pontos médios) calculados, e ajusta esses centróides até que a convergência seja alcançada, resultando em uma divisão eficiente e não supervisionada dos dados em clusters distintos. O K-Means é amplamente aplicado em segmentação de mercado, análise de imagem, reconhecimento de padrões e muitas outras aplicações.
 
 Em outro âmbito, a distribuição normal bivariada é útil para entender como as duas variáveis estão relacionadas e como se comportam juntas pois a descreve completamente a variabilidade de ambas as variáveis, levando em consideração suas médias, desvios padrão, bem como a covariância e a correlação entre elas. Suas principais aplicações são:
@@ -96,13 +98,41 @@ kmeansmanual <- function(n, mu1, mu2, Sigma, it=FALSE, semente=1){
 }
 ```
 
-https://ufsm.shinyapps.io/kmeans/
+### Cenário 1
+``` r
+kmeansmanual(n=50, mu1=c(0,0), mu2=c(1,1), Sigma=matrix(c(1,-.9,-.9,1),2))
+```
+<p align="center">
+  <img src="cenario1.png" alt="Cenario1" width="430">
+</p>
 
+A partir do Cenário 1 é possível observar que o algoritmo k-means separa os grupos priorizando por maiores observações no eixo y para o grupo 1 e maiores valores do eixo x para o grupo 2. Como as médias das amostras normais bivariadas estão próximas, ambos centroides acabaram agrupando observações dos dois grupos.
+
+### Cenário 2
+Aumentando a variabilidade e habilitando a visualização em cada iteração do algoritmo
+``` r
+kmeansmanual(n=50, mu1=c(0,0), mu2=c(1,1), Sigma=matrix(c(6,2,2,3),2), it=TRUE)
+```
+<p align="center">
+  <img src="cenario2.png" alt="Cenario2" width="330">
+</p>
+
+Neste Cenário (equivalente ao anterior exceto a matriz de covariância), adicionamos mais variabilidade para mesclar os grupos e avaliar o comportamento do algoritmo. Notamos que observações distantes do aglomerado do seu grupo foram classificadas pertencentes ao grupo alheio, como esperado, dado que o k-means classifica pela menor distância em relação aos centroides.
+
+### Cenário 3
+Aumentando tamanho amostral e definindo média maior (mais distante)
+``` r
+kmeansmanual(n=150, mu1=c(0,0), mu2=c(2.5,2.5), Sigma=matrix(c(1,-.9,-.9,1),2), it=TRUE, semente=24)
+```
+<p align="center">
+  <img src="cenario3.png" alt="Cenario3" width="330">
+</p>
+Aumentamos o tamanho amostral e a média da amostra para 2. Percebe-se a adaptação do algoritmo conforme as iterações ocorrem, ajustando-se para classificar com perfeita exatidão (Acurácia$=1$) neste caso com médias amostrais distantes entre os grupos.
 
 #### Função com mais argumentos
 
 <details>
-<summary>Clique para expandir</summary>
+<summary>Clique para expandir o código</summary>
   
 ``` r
 kmeansmanual <- function(n, mu1, mu2, Sigma, Rep = 10, input.centros = FALSE, centros = c(1,2), out.plot = TRUE, centros.plot = 1, semente=1){ 
