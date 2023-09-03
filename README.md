@@ -106,7 +106,7 @@ kmeansmanual(n=50, mu1=c(0,0), mu2=c(1,1), Sigma=matrix(c(1,-.9,-.9,1),2))
   <img src="cenario1.png" alt="Cenario1" width="450">
 </p>
 
-A partir do Cenário 1 é possível observar que o algoritmo k-means separa os grupos priorizando por maiores observações no eixo y para o grupo 1 e maiores valores do eixo x para o grupo 2. Como as médias das amostras normais bivariadas estão próximas, ambos centroides acabaram agrupando observações dos dois grupos.
+A partir do Cenário 1 é possível observar que o algoritmo k-means separa os grupos priorizando por maiores observações no eixo y para o grupo 1 e maiores valores do eixo x para o grupo 2, obtendo uma acurácia precária de 63%. Como as médias das amostras normais bivariadas estão próximas, ambos centroides acabaram agrupando observações dos dois grupos.
 
 ### Cenário 2
 Aumentando a variabilidade e habilitando a visualização em cada iteração do algoritmo
