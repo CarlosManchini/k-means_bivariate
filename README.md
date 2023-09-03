@@ -6,8 +6,15 @@ App desenvolvido disponível em https://ufsm.shinyapps.io/kmeans/
 
 O K-Means é uma técnica de agrupamento (clustering) amplamente utilizada em aprendizado de máquina e análise de dados, projetada para dividir um conjunto de dados em grupos ou clusters de forma que os pontos de dados dentro de um mesmo grupo sejam mais semelhantes entre si do que com os pontos de outros grupos. Ele funciona iterativamente atribuindo pontos de dados a clusters com base na proximidade em relação a centróides (pontos médios) calculados, e ajusta esses centróides até que a convergência seja alcançada, resultando em uma divisão eficiente e não supervisionada dos dados em clusters distintos. O K-Means é amplamente aplicado em segmentação de mercado, análise de imagem, reconhecimento de padrões e muitas outras aplicações.
 
-Em outro âmbito, a distribuição normal bivariada é útil para entender como as duas variáveis estão relacionadas e como se comportam juntas pois a descreve completamente a variabilidade de ambas as variáveis, levando em consideração suas médias, desvios padrão, bem como a covariância e a correlação entre elas. Suas principais aplicações são:
+Em outro âmbito, a distribuição normal bivariada é útil para entender como as duas variáveis estão relacionadas e como se comportam juntas pois a descreve completamente a variabilidade de ambas as variáveis, levando em consideração seus parâmetros. A distribuição é definida por sua média, que representa o ponto de máximo da curva, e uma matriz de covariância, que indica como as duas variáveis se relacionam e controla a dispersão dos dados em relação à média.  
+Sua função densidade de probabilidade conjunta para as variáveis aleatórias $X$ e $Y$ é dada por
 
+$$f(x, y) = \frac{1}{2\pi\sigma_X\sigma_Y\sqrt{1-\rho^2}} \exp\left(-\frac{1}{2(1-\rho^2)}\left[\frac{(x - \mu_X)^2}{\sigma_X^2} - 2\rho\frac{(x - \mu_X)(y - \mu_Y)}{\sigma_X\sigma_Y} + \frac{(y - \mu_Y)^2}{\sigma_Y^2}\right]\right)$$
+em que os centros $\mu_X$ e $\mu_Y$ são as médias das variáveis $X$ e $Y$, respectivamente.
+A dispersão $\sigma_X$ e $\sigma_Y$ são os desvios padrão das mesmas e $\rho$ é o coeficiente de correlação entre ambas variáveis aleatórias.
+
+
+Suas principais aplicações são:   
 * **Risco e finanças**:  Em finanças, é crucial entender a relação conjunta entre os retornos de diferentes ativos financeiros para gerenciar portfólios de investimentos e calcular o risco associado a essas carteiras;
 * **Epidemiologia**: Em estudos epidemiológicos, é comum analisar conjuntamente a exposição a fatores de risco e o desenvolvimento de uma doença, para determinar se existe uma associação entre eles;
 * **Engenharia e Controle de Processos**: Para modelar conjuntamente as variáveis que afetam o desempenho ou a qualidade de um processo industrial, a fim de otimizar a produção e garantir a qualidade do produto;
@@ -127,7 +134,7 @@ kmeansmanual(n=150, mu1=c(0,0), mu2=c(2.5,2.5), Sigma=matrix(c(1,-.9,-.9,1),2), 
 <p align="center">
   <img src="cenario3.png" alt="Cenario3" width="369">
 </p>
-Aumentamos o tamanho amostral e a média da amostra para 2. Percebe-se a adaptação do algoritmo conforme as iterações ocorrem, ajustando-se para classificar com perfeita exatidão (Acurácia=1) neste caso com médias amostrais distantes entre os grupos.
+Aumentamos o tamanho amostral e a média da amostra para 2 propositalmente para observar o processo de correção. Percebe-se a adaptação do algoritmo conforme as iterações ocorrem, ajustando-se para classificar com perfeita exatidão (Acurácia=1) neste caso com médias amostrais distantes entre os grupos.
 
 #### Função com mais argumentos
 
