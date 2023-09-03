@@ -103,7 +103,7 @@ kmeansmanual <- function(n, mu1, mu2, Sigma, it=FALSE, semente=1){
 kmeansmanual(n=50, mu1=c(0,0), mu2=c(1,1), Sigma=matrix(c(1,-.9,-.9,1),2))
 ```
 <p align="center">
-  <img src="cenario1.png" alt="Cenario1" width="430">
+  <img src="cenario1.png" alt="Cenario1" width="450">
 </p>
 
 A partir do Cenário 1 é possível observar que o algoritmo k-means separa os grupos priorizando por maiores observações no eixo y para o grupo 1 e maiores valores do eixo x para o grupo 2. Como as médias das amostras normais bivariadas estão próximas, ambos centroides acabaram agrupando observações dos dois grupos.
@@ -117,7 +117,7 @@ kmeansmanual(n=50, mu1=c(0,0), mu2=c(1,1), Sigma=matrix(c(6,2,2,3),2), it=TRUE)
   <img src="cenario2.png" alt="Cenario2" width="330">
 </p>
 
-Neste Cenário (equivalente ao anterior exceto a matriz de covariância), adicionamos mais variabilidade para mesclar os grupos e avaliar o comportamento do algoritmo. Notamos que observações distantes do aglomerado do seu grupo foram classificadas pertencentes ao grupo alheio, como esperado, dado que o k-means classifica pela menor distância em relação aos centroides.
+Neste Cenário (equivalente ao anterior exceto a matriz de covariância), adicionamos mais variabilidade para mesclar os grupos e avaliar o comportamento do algoritmo. Notamos que observações distantes do aglomerado do seu grupo foram classificadas pertencentes ao grupo alheio, como esperado, dado que o k-means classifica pela menor distância em relação aos centroides. Por fim, obtém-se uma acurácia igual a 72%.
 
 ### Cenário 3
 Aumentando tamanho amostral e definindo média maior (mais distante)
@@ -125,9 +125,9 @@ Aumentando tamanho amostral e definindo média maior (mais distante)
 kmeansmanual(n=150, mu1=c(0,0), mu2=c(2.5,2.5), Sigma=matrix(c(1,-.9,-.9,1),2), it=TRUE, semente=24)
 ```
 <p align="center">
-  <img src="cenario3.png" alt="Cenario3" width="330">
+  <img src="cenario3.png" alt="Cenario3" width="369">
 </p>
-Aumentamos o tamanho amostral e a média da amostra para 2. Percebe-se a adaptação do algoritmo conforme as iterações ocorrem, ajustando-se para classificar com perfeita exatidão (Acurácia$=1$) neste caso com médias amostrais distantes entre os grupos.
+Aumentamos o tamanho amostral e a média da amostra para 2. Percebe-se a adaptação do algoritmo conforme as iterações ocorrem, ajustando-se para classificar com perfeita exatidão (Acurácia=1) neste caso com médias amostrais distantes entre os grupos.
 
 #### Função com mais argumentos
 
